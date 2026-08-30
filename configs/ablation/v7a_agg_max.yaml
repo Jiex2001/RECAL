@@ -1,0 +1,5 @@
+# Variant 7a: max over relations, i.e. no multiple-comparison correction.
+inherit: ../cadets.yaml
+exp_name: cadets_v7a_agg_max
+detect:
+  aggregation: max

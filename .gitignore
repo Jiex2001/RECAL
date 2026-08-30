@@ -1,0 +1,21 @@
+# Data and outputs.  These three are symlinks in the development tree; see README.
+data
+proc
+runs
+
+# Internal-only, not part of the release.
+CLAUDE.md
+tests/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp

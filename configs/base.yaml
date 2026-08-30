@@ -1,0 +1,63 @@
+# RECAL defaults = the full model of the paper.
+# Dataset yamls override `data.dataset` / `exp_name`; ablation yamls inherit those.
+exp_name: cadets_full
+device: cuda
+
+data:
+  dataset: cadets
+  calib_index: -1            # §5.3 calibration graph = last training graph
+  magic_label_filter: false  # D1
+
+feature:
+  use_semantic: true
+  use_profile: true
+  w2v_dim: 32
+  buffer_L: 20
+  lambda_decay: 1.925e-4
+
+mask:
+  mode: powerlaw             # powerlaw | uniform
+  p0: 0.3
+  gamma: 0.5
+  p_min: 0.05
+  p_max: 0.9
+  uniform_rate: 0.5
+
+model:
+  hidden: 64
+  n_layers: 3
+  n_heads: 4
+  decoder: per_relation      # per_relation | shared_gat
+  use_link_pred: false
+  # encoder details, F10 / §6.1 (MAGIC build_model hard-codes these)
+  activation: prelu
+  norm: BatchNorm
+  residual: true
+  feat_drop: 0.1
+  attn_drop: 0.0
+  negative_slope: 0.2
+  alpha_l: 3                 # sce loss exponent
+
+train:
+  epochs: 50
+  lr: 1.0e-3
+  weight_decay: 5.0e-4
+  seed: 0
+  gpu_cache_gb: 16           # keep this many GB of graphs resident on the GPU
+
+detect:
+  mode: two_stage            # two_stage | knn_only | quantile_only
+  calibration: quantile      # quantile | zscore
+  aggregation: fisher        # fisher | max | mean | sidak  (R11: Eq.6 writes max)
+  fallback: lex              # lex | zero   (R10: non-candidates ordered by stage 1)
+  alpha_cand: 0.90
+  target_calib_alarm: 0.01
+  n_rounds: 10
+  knn_k: null                # null -> F11 (200 for cadets, 10 otherwise)
+  knn_ref_max: 50000         # R7: size of the denominator sample, not of the index
+  min_calib_samples: 50      # §7.1 fewer than this -> fallback bucket
+
+eval:
+  operating_point: best_f1   # best_f1 | fixed_calib
+  protocol: threatrace_2hop  # threatrace_2hop | strict  (THREATRACE TIFS'22 §VI-C-1)
+  tolerance_hops: 2          # K of the tolerant counting rule

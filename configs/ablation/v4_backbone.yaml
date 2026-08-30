@@ -1,0 +1,11 @@
+# Variant 4: backbone (MAGIC-style) = uniform mask + shared GAT decoder +
+# link prediction + KNN detection.
+inherit: ../cadets.yaml
+exp_name: cadets_v4_backbone
+mask:
+  mode: uniform
+model:
+  decoder: shared_gat
+  use_link_pred: true
+detect:
+  mode: knn_only

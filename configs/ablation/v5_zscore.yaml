@@ -1,0 +1,5 @@
+# Variant 5: z-score calibration instead of the empirical CDF.
+inherit: ../cadets.yaml
+exp_name: cadets_v5_zscore
+detect:
+  calibration: zscore
