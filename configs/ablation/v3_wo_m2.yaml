@@ -1,0 +1,5 @@
+# Variant 3: w/o M2, threshold still from the calibration graph's knn_score.
+inherit: ../cadets.yaml
+exp_name: cadets_v3_wo_m2
+detect:
+  mode: knn_only

@@ -1,0 +1,5 @@
+# Variant 6: stage 2 only, no KNN candidate screen.
+inherit: ../cadets.yaml
+exp_name: cadets_v6_stage2_only
+detect:
+  mode: quantile_only

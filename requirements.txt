@@ -1,0 +1,20 @@
+# RECAL runtime requirements.  Versions are the ones these results were produced
+# with (RTX 5090 / sm_120, so cu128 wheels): install torch first, from the index
+# that matches your GPU, then the rest.
+#
+# dgl is NOT required, unlike MAGIC's own requirements.txt: it has no sm_120 wheel
+# and is unmaintained, so the GAT encoder is ported to torch_geometric instead.
+# torch_scatter / torch_sparse / pyg_lib are not required either -- PyG 2.x falls
+# back to torch's native scatter_reduce, which covers every op here.
+
+torch==2.8.0
+torch_geometric==2.7.0
+numpy==2.3.2
+scipy==1.17.1
+scikit-learn==1.8.0
+gensim==4.4.0
+PyYAML==6.0.2
+pandas==2.2.2
+pyarrow==25.0.1
+matplotlib==3.10.5
+tqdm==4.66.2

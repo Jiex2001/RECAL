@@ -1,0 +1,10 @@
+# Variant 2b: w/o M1 in full (uniform mask + shared decoder); no per-relation
+# errors exist, so M2 degrades to knn_only (enforced by config validation).
+inherit: ../cadets.yaml
+exp_name: cadets_v2b_uniform_shared
+mask:
+  mode: uniform
+model:
+  decoder: shared_gat
+detect:
+  mode: knn_only

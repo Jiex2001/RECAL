@@ -1,0 +1,6 @@
+# Variant 7b: mean over relations -- the other end of the aggregation axis: no
+# accumulation of evidence, the loudest relation is diluted instead.
+inherit: ../cadets.yaml
+exp_name: cadets_v7b_agg_mean
+detect:
+  aggregation: mean

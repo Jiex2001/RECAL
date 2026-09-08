@@ -1,0 +1,5 @@
+# Variant 8: w/o the temporal relation-transition profile block (Eq.2).
+inherit: ../cadets.yaml
+exp_name: cadets_v8_wo_profile
+feature:
+  use_profile: false

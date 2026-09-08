@@ -1,0 +1,5 @@
+# Variant 2a: w/o M1, uniform masking only (per-relation heads kept, so M2 still works).
+inherit: ../cadets.yaml
+exp_name: cadets_v2a_uniform_mask
+mask:
+  mode: uniform
